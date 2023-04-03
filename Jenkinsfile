@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git branch: 'main', url: https://github.com/Sinjith-Reddy/Java-app-CI-CD.git
+        git branch: 'main', url: 'https://github.com/Sinjith-Reddy/Java-app-CI-CD.git'
       }
     }
     stage('Build') {
