@@ -1,7 +1,7 @@
 pipeline {
   agent { label 'java'}
-  environment {
-    tool maven 'MAVEN_HOME'
+  tools {
+    maven 'MAVEN_HOME'
   }
   stages {
     stage('Checkout') {
