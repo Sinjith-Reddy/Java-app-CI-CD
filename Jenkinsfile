@@ -1,5 +1,5 @@
 pipeline {
-  agent {node: 'java'}
+  agent { label 'java'}
   environment {
     tool maven 'MAVEN_HOME'
   }
