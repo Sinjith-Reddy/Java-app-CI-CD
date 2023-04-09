@@ -15,10 +15,10 @@ pipeline {
   
   //Starting of pipeline stages
   stages {
-    // Scource code checkout/cloe stage
+    // Scource code checkout/clone stage
     stage('Checkout') {
       steps {
-        git branch: 'main', url: 'https://github.com/Sinjith-Reddy/Java-app-CI-CD.git'
+        git branch: 'main', url: 'https://github.com/Sinjith-Reddy/JavaWebApp.git'
       }
     }
     
