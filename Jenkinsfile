@@ -45,7 +45,7 @@ pipeline {
     //Building a docker image
     stage('Build Docker image') {
       steps {
-        sh 'docker build -t sinjithreddy/Java-app-CI-CD .'
+        sh 'docker build -t sinjithreddy/javawebapp .'
       }
     }
     
@@ -58,7 +58,7 @@ pipeline {
       
     stage('Push image to DockerHub'){
       steps{
-        sh 'docker push sinjithreddy/Java-app-CI-CD:latest'
+        sh 'docker push sinjithreddy/javawebapp:latest'
       }
       post {
         always {
@@ -70,9 +70,9 @@ pipeline {
     stage('deploy docker image') {
       steps {
         sshagent(credentials:['Credentials-ID']) {
-          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker stop Java-app-CI-CD || true && docker rm Java-app-CI-CD|| true'"
-          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull sinjithreddy/Java-app-CI-CD'"
-          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name hello-world-js -dt -p 8081:8081 sinjithreddy/Java-app-CI-CD:latest'"
+          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker stop javawebapp || true && docker rm javawebapp|| true'"
+          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker pull sinjithreddy/javawebapp'"
+          sh "ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_SERVER} 'docker run --name javawebapp -dt -p 8081:8081 sinjithreddy/javawebapp:latest'"
         }
       }
     }  
